@@ -2,4 +2,5 @@
 
 # Stop the Apache HTTP Server
 service apache2 stop || systemctl stop apache2
-docker stop $(docker ps -q --filter "publish=80")
+containerid=`docker ps | awk -F " " 'print{1}'`
+docker rm -f $containerid
